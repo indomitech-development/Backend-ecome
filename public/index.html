@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" action="/Phone">
+        <input type="text" name="phone" id="phone" placeholder="phone no"/>
+        <input type="text" name="dec" id="dec" placeholder="description"/>
+
+        
+        <button class="btn btn-info" onclick="SendData()">Send</button>
+    </form>
+
+    <script>
+        SendData = () =>{
+         let phone =  document.getElementById('phone').value
+         let text =  document.getElementById('dec').value
+
+         var options = {
+
+method: "POST",
+body: JSON.stringify({ phone : phone , text : text }),
+headers: {
+  "Content-Type": "application/json"
+}
+}
+
+fetch('/Phone', options)
+.then((res) =>{ res.json()})
+.catch((error) => console.log(error))
+
+// this.toggle()
+
+}
+                                               
+    </script>
+</body>
+</html>

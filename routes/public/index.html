@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/message" method="POST">
+        <input type="text" name="text" id="text" placeholder="Enter Data"/>
+        <input type="text" name="no" id="no" placeholder="Enter phone number"/>
+        <button class="btn btn-success" onclick="Data()">Submit</button>
+    </form>
+
+    <script>
+         Data=()=>{
+        let tex = document.getElementById('text').value;
+        let no = document.getElementById('no').value
+
+        fetch('/message' ,{
+            method :'post',
+            headers:{
+                'Content-type' : 'application.json'
+            },
+            body: JSON.stringify({ text : tex , number : no})
+        })
+        .then(res =>{
+           console.log("data " , res) 
+        })
+        .catch(err=>{
+            console.lig(err)
+        })
+         }
+
+  
+
+
+    </script>
+
+</body>
+</html>
